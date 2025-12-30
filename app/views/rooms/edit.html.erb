@@ -1,10 +1,64 @@
 <% content_for :title, "Editing room" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing room</h1>
+<div
+  style="
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+  "
+>
+  <!-- Header -->
+  <h1
+    style="
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f2a44;
+      margin-bottom: 1.25rem;
+    "
+  >
+    ✈️ Edit Flight Channel
+  </h1>
 
+  <!-- Room form -->
   <%= render "form", room: @room %>
 
-  <%= link_to "Show this room", @room, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to rooms", rooms_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <!-- Navigation controls -->
+  <div
+    style="
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    "
+  >
+    <%= link_to "Show this room", @room,
+      style: "
+        display: inline-block;
+        text-align: center;
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        background: linear-gradient(to bottom, #f7fbff, #e8f2fb);
+        color: #0f2a44;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid #c6ddf2;
+        box-shadow: 0 4px 10px rgba(15, 42, 68, 0.15);
+      "
+    %>
+
+    <%= link_to "Back to rooms", rooms_path,
+      style: "
+        display: inline-block;
+        text-align: center;
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        background: linear-gradient(to bottom, #f7fbff, #e8f2fb);
+        color: #0f2a44;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid #c6ddf2;
+        box-shadow: 0 4px 10px rgba(15, 42, 68, 0.15);
+      "
+    %>
+  </div>
 </div>

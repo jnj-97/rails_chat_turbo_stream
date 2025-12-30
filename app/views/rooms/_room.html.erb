@@ -1,6 +1,54 @@
-<div id="<%= dom_id room %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= room.name %>
+<div
+  id="<%= dom_id room %>"
+  style="
+    width: 100%;
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to bottom, #ffffff, #f2f8ff);
+    border-radius: 14px;
+    border: 1px solid #c6ddf2;
+    box-shadow: 0 10px 24px rgba(15, 42, 68, 0.12);
+    position: relative;
+  "
+>
+  <!-- Channel badge -->
+  <div
+    style="
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      background: #1e6fb9;
+      color: white;
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    "
+    aria-hidden="true"
+  >
+    CHANNEL
+  </div>
+
+  <div style="margin-top: 0.5rem;">
+    <strong
+      style="
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+        color: #0f2a44;
+        letter-spacing: 0.02em;
+      "
+    >
+      ✈️ Channel Name
+    </strong>
+
+    <div
+      style="
+        font-size: 1rem;
+        color: #163a5f;
+      "
+    >
+      <%= room.name %>
+    </div>
   </div>
 </div>

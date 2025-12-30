@@ -1,30 +1,93 @@
-<%= form_with(model: [room, @message], class: "contents") do |form| %>
+<%= form_with(model: [room, @message], style: "display: contents;") do |form| %>
   <% if @message.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this @message from being saved:</h2>
+    <div
+      id="error_explanation"
+      style="
+        background: #fff0f0;
+        color: #8a1f11;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+        border-left: 5px solid #e5533d;
+        font-weight: 500;
+      "
+    >
+      <h2 style="margin: 0 0 0.5rem 0; font-size: 0.95rem;">
+        <%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:
+      </h2>
 
-      <ul class="list-disc ml-6">
+      <ul style="margin: 0; padding-left: 1.25rem;">
         <% @message.errors.each do |error| %>
-          <li><%= error.full_@message %></li>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :content %>
-    <%= form.textarea :content, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @message.errors[:content].none?, "border-red-400 focus:outline-red-600": @message.errors[:content].any?}] %>
+  <!-- Message input (Cockpit comms panel) -->
+  <div style="margin: 1.25rem 0;">
+    <%= form.label :content, style: "display: block; font-weight: 600; color: #0f2a44;" %>
+
+    <%= form.textarea :content,
+      rows: 4,
+      style: "
+        display: block;
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 0.75rem;
+        border-radius: 10px;
+        border: 1px solid #{@message.errors[:content].any? ? '#e5533d' : '#9bbbd6'};
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        font-size: 0.95rem;
+        outline: none;
+      "
+    %>
   </div>
 
-  <div class="my-5">
-    <%= form.hidden_field :user_id, value: current_user.id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @message.errors[:user_id].none?, "border-red-400 focus:outline-red-600": @message.errors[:user_id].any?}] %>
+  <!-- Hidden user_id -->
+  <div style="margin: 1.25rem 0;">
+    <%= form.hidden_field :user_id,
+      value: current_user.id,
+      style: "
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 8px;
+        border: 1px solid #{@message.errors[:user_id].any? ? '#e5533d' : '#9bbbd6'};
+      "
+    %>
   </div>
 
-  <div class="my-5">
-    <%= form.hidden_field :room_id, value: room.id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @message.errors[:room_id].none?, "border-red-400 focus:outline-red-600": @message.errors[:room_id].any?}] %>
+  <!-- Hidden room_id -->
+  <div style="margin: 1.25rem 0;">
+    <%= form.hidden_field :room_id,
+      value: room.id,
+      style: "
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 8px;
+        border: 1px solid #{@message.errors[:room_id].any? ? '#e5533d' : '#9bbbd6'};
+      "
+    %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <!-- Submit (Runway-style action button) -->
+  <div style="margin-top: 1.5rem;">
+    <%= form.submit "✈️ Send Message",
+      style: "
+        display: inline-block;
+        width: 100%;
+        max-width: 220px;
+        padding: 0.65rem 1.2rem;
+        border-radius: 999px;
+        background: linear-gradient(to right, #1e6fb9, #1e90ff);
+        color: white;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(30, 111, 185, 0.35);
+      "
+    %>
   </div>
 <% end %>

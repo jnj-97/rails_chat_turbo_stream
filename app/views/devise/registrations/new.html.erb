@@ -1,0 +1,96 @@
+<h2 style="font-size: 2rem; font-weight: 700; color: #0f2a44; margin-bottom: 1.25rem;">
+  ✈️ Pilot Registration
+</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+      style: "max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;"
+    ) do |f| %>
+
+  <!-- Error messages -->
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <!-- Email -->
+  <div>
+    <%= f.label :email,
+      style: "display: block; font-weight: 600; color: #0f2a44; margin-bottom: 0.35rem;"
+    %>
+    <%= f.email_field :email,
+      autofocus: true,
+      autocomplete: "email",
+      style: "
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        border-radius: 10px;
+        border: 1px solid #9bbbd6;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        font-size: 1rem;
+        outline: none;
+      "
+    %>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <%= f.label :password,
+      style: "display: block; font-weight: 600; color: #0f2a44; margin-bottom: 0.35rem;"
+    %>
+    <% if @minimum_password_length %>
+      <em style="font-size: 0.85rem; color: #5f7f9b;">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password,
+      autocomplete: "new-password",
+      style: "
+        width: 100%;
+        margin-top: 0.25rem;
+        padding: 0.6rem 0.8rem;
+        border-radius: 10px;
+        border: 1px solid #9bbbd6;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        font-size: 1rem;
+        outline: none;
+      "
+    %>
+  </div>
+
+  <!-- Password confirmation -->
+  <div>
+    <%= f.label :password_confirmation,
+      style: "display: block; font-weight: 600; color: #0f2a44; margin-bottom: 0.35rem;"
+    %>
+    <%= f.password_field :password_confirmation,
+      autocomplete: "new-password",
+      style: "
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        border-radius: 10px;
+        border: 1px solid #9bbbd6;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        font-size: 1rem;
+        outline: none;
+      "
+    %>
+  </div>
+
+  <!-- Submit -->
+  <div>
+    <%= f.submit "Sign up",
+      style: "
+        display: inline-block;
+        width: 100%;
+        padding: 0.65rem 1.2rem;
+        border-radius: 999px;
+        background: linear-gradient(to right, #1e6fb9, #1e90ff);
+        color: white;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(30, 111, 185, 0.35);
+      "
+    %>
+  </div>
+
+<% end %>
+
+<div style="margin-top: 1rem;">
+  <%= render "devise/shared/links" %>
+</div>

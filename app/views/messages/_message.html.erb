@@ -1,7 +1,65 @@
-<div id="<%= dom_id message %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= message.content %> by <%=message.user.email%>
+<div
+  id="<%= dom_id message %>"
+  style="
+    width: 100%;
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to bottom, #ffffff, #f2f8ff);
+    border-radius: 14px;
+    border: 1px solid #c6ddf2;
+    box-shadow: 0 10px 24px rgba(15, 42, 68, 0.12);
+    position: relative;
+  "
+>
+  <!-- Flight log badge -->
+  <div
+    style="
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      background: #1e6fb9;
+      color: white;
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    "
+    aria-hidden="true"
+  >
+    ATC LOG
   </div>
 
+  <div style="margin-top: 0.5rem;">
+    <strong
+      style="
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+        color: #0f2a44;
+        letter-spacing: 0.02em;
+      "
+    >
+      ✈️ Transmission
+    </strong>
+
+    <div
+      style="
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #163a5f;
+      "
+    >
+      <%= message.content %>
+    </div>
+
+    <div
+      style="
+        margin-top: 0.6rem;
+        font-size: 0.75rem;
+        color: #5f7f9b;
+      "
+    >
+      — <%= message.user.email %>
+    </div>
+  </div>
 </div>

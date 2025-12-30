@@ -1,4 +1,4 @@
 class Room < ApplicationRecord
     broadcasts_to->(room){:rooms_list}
-    has_many :messages
+    has_many :messages,dependent: :destroy
 end

@@ -1,30 +1,152 @@
 <% content_for :title, "Rooms" %>
 
-<div class="w-full">
+<div style="width: 100%;">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <p
+      id="notice"
+      style="
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        margin-bottom: 1.25rem;
+        background: #e6f9ef;
+        color: #146c43;
+        font-weight: 600;
+        border-radius: 999px;
+        box-shadow: 0 4px 10px rgba(20, 108, 67, 0.15);
+      "
+    >
+      ✅ <%= notice %>
+    </p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Rooms</h1>
-    <%= link_to "New room", new_room_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  <!-- Header / Controls -->
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    "
+  >
+    <h1
+      style="
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #0f2a44;
+        margin: 0;
+      "
+    >
+      ✈️ Flight Channels
+    </h1>
+
+    <%= link_to "New room", new_room_path,
+      style: "
+        display: inline-block;
+        padding: 0.65rem 1.25rem;
+        border-radius: 999px;
+        background: linear-gradient(to right, #1e6fb9, #1e90ff);
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 6px 16px rgba(30, 111, 185, 0.35);
+      "
+    %>
   </div>
 
-  <div id="rooms" class="min-w-full divide-y divide-gray-200 space-y-5">
+  <!-- Rooms radar feed -->
+  <div
+    id="rooms"
+    style="
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    "
+  >
     <% if @rooms.any? %>
-    <%=turbo_stream_from "rooms_list"%>
+      <%= turbo_stream_from "rooms_list" %>
+
       <% @rooms.each do |room| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px dashed #c6ddf2;
+          "
+        >
+          <!-- Room card -->
           <%= render room %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", room, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Edit", edit_room_path(room), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Destroy", room, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+
+          <!-- Controls -->
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.5rem;
+            "
+          >
+            <%= link_to "Show", room,
+              style: "
+                display: inline-block;
+                text-align: center;
+                padding: 0.55rem 1.1rem;
+                border-radius: 999px;
+                background: linear-gradient(to bottom, #f7fbff, #e8f2fb);
+                color: #0f2a44;
+                font-weight: 600;
+                text-decoration: none;
+                border: 1px solid #c6ddf2;
+                box-shadow: 0 4px 10px rgba(15, 42, 68, 0.15);
+              "
+            %>
+
+            <%= link_to "Edit", edit_room_path(room),
+              style: "
+                display: inline-block;
+                text-align: center;
+                padding: 0.55rem 1.1rem;
+                border-radius: 999px;
+                background: linear-gradient(to bottom, #f7fbff, #e8f2fb);
+                color: #0f2a44;
+                font-weight: 600;
+                text-decoration: none;
+                border: 1px solid #c6ddf2;
+                box-shadow: 0 4px 10px rgba(15, 42, 68, 0.15);
+              "
+            %>
+
+            <%= button_to "Destroy", room,
+              method: :delete,
+              data: { turbo_confirm: "Are you sure?" },
+              style: "
+                padding: 0.55rem 1.1rem;
+                border-radius: 999px;
+                background: linear-gradient(to right, #e5533d, #ff6b5c);
+                color: white;
+                font-weight: 600;
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 6px 16px rgba(229, 83, 61, 0.35);
+              "
+            %>
           </div>
         </div>
       <% end %>
     <% else %>
-      <p class="text-center my-10">No rooms found.</p>
+      <p
+        style="
+          text-align: center;
+          margin: 3rem 0;
+          color: #5f7f9b;
+          font-size: 1rem;
+        "
+      >
+        ✈️ No channels found.
+      </p>
     <% end %>
   </div>
 </div>
